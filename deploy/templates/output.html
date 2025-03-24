@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Myocardial Infarction Prediction Result - Check your prediction here with an intuitive and user-friendly interface.">
+    <meta name="keywords" content="Myocardial Infarction, Prediction, Health, Result, Medical Diagnosis">
+    <meta name="author" content="Your Name or Team Name">
+    <title>Prediction Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <style>
+        /* Body styling with a consistent background image */
+        body {
+            background-image: url("{{ url_for('static', filename='image/out.jpg') }}");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            font-family: Arial, sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Centered result box styling */
+        .result-box {
+            margin: 50px auto;
+            padding: 30px;
+            border: 1px solid #ced4da;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.9);
+            text-align: center;
+            max-width: 600px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Headings and paragraph styling */
+        h2 {
+            font-size: 24px;
+            color: #0056b3;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        /* Button styling */
+        a.btn {
+            font-size: 16px;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+        }
+
+        a.btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Responsive styling for smaller screens */
+        @media (max-width: 768px) {
+            .result-box {
+                margin: 20px;
+                padding: 20px;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+
+            p {
+                font-size: 16px;
+            }
+
+            a.btn {
+                font-size: 14px;
+                padding: 8px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="result-box">
+            <h2>MYOCARDIAL INFARCTION PREDICTION RESULT</h2>
+            <!-- Dynamic prediction result rendered here -->
+            <p>{{ prediction_text }}</p>
+            <!-- Navigation button -->
+            <a href="{{ url_for('home') }}" class="btn btn-primary">Go Back</a>
+        </div>
+    </div>
+</body>
+</html>
+

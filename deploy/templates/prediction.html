@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>MYOCARDIAL INFARCTION PREDICTION</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    <style>
+      .back {
+        background-image: url("{{ url_for('static', filename='image/img.jpg') }}");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+      }
+
+      .white {
+        color: white;
+      }
+
+      .space {
+        margin: 10px 0;
+        padding: 5px 10px;
+        background: rgba(255, 255, 255, 0.8);
+        border-radius: 5px;
+      }
+
+      .gap {
+        padding: 10px 20px;
+      }
+
+      .result-box {
+        background: skyblue;
+        padding: 2% 10%;
+        border-radius: 10px;
+        text-align: center;
+      }
+    </style>
+  </head>
+
+  <body class="back">
+    <div class="container">
+      <div class="jumbotron text-center">
+        <h1>MYOCARDIAL INFARCTION PREDICTION</h1>
+      </div>
+
+      <!-- Main Input For Receiving Query -->
+      <form class="form-group" action="{{ url_for('prediction') }}" method="post">
+        <div class="row">
+          <div class="gap col-md-6">
+            <label class="white" for="Age">Age</label>
+            <input type="number" class="space form-control" step="0.01" name="Age" placeholder="Enter Age" required /><br>
+
+            <label class="white" for="Marital_status">Marital Status</label>
+            <select class="space form-control" name="Marital_status" id="Marital_status" required>
+              <option value="0">MARRIED</option>
+              <option value="1">SINGLE</option>
+            </select><br>
+
+            <label class="white" for="Sleep">Sleep</label>
+            <select class="space form-control" name="Sleep" id="Sleep" required>
+              <option value="0">NO</option>
+              <option value="1">YES</option>
+            </select><br>
+
+            <label class="white" for="Depression">Depression</label>
+            <select class="space form-control" name="Depression" id="Depression" required>
+              <option value="0">NO</option>
+              <option value="1">YES</option>
+            </select><br>
+
+            <label class="white" for="Smoking">Smoking</label>
+            <select class="space form-control" name="Smoking" id="Smoking" required>
+              <option value="0">NO</option>
+              <option value="1">YES</option>
+            </select><br>
+
+            <label class="white" for="Diabetes">Diabetes</label>
+            <select class="space form-control" name="Diabetes" id="Diabetes" required>
+              <option value="0">NO</option>
+              <option value="1">YES</option>
+            </select><br>
+
+            <label class="white" for="BP">Blood Pressure</label>
+            <input type="number" class="space form-control" step="0.01" name="BP" placeholder="Enter Blood Pressure" required /><br>
+
+            <label class="white" for="Hypersensitivity">Hypersensitivity</label>
+            <select class="space form-control" name="Hypersensitivity" id="Hypersensitivity" required>
+              <option value="0">NO</option>
+              <option value="1">YES</option>
+            </select><br>
+
+            <label class="white" for="cp">Chest Pain Type (CP)</label>
+            <select class="space form-control" name="cp" id="cp" required>
+              <option value="1">Typical angina</option>
+              <option value="2">Atypical angina</option>
+              <option value="3">Non-anginal pain</option>
+              <option value="4">Asymptomatic</option>
+            </select><br>
+
+            <label class="white" for="trestbps">Resting Blood Pressure (trestbps)</label>
+            <input type="number" class="space form-control" step="0.01" name="trestbps" placeholder="Enter Resting BP" required /><br>
+          </div>
+
+          <div class="gap col-md-6">
+            <label class="white" for="chol">Cholesterol Level</label>
+            <input type="number" class="space form-control" step="0.01" name="chol" placeholder="Enter Cholesterol Level" required /><br>
+
+            <label class="white" for="fbs">Fasting Blood Sugar (fbs)</label>
+            <select class="space form-control" name="fbs" id="fbs" required>
+              <option value="0">NO</option>
+              <option value="1">YES</option>
+            </select><br>
+
+            <label class="white" for="restecg">Resting ECG Results</label>
+            <select class="space form-control" name="restecg" id="restecg" required>
+              <option value="0">Normal</option>
+              <option value="1">ST-T wave abnormality</option>
+              <option value="2">Left ventricular hypertrophy</option>
+            </select><br>
+
+            <label class="white" for="thalach">Max Heart Rate Achieved (thalach)</label>
+            <input type="number" class="space form-control" step="0.01" name="thalach" placeholder="Enter Max Heart Rate" required /><br>
+
+            <label class="white" for="exang">Exercise-Induced Angina (exang)</label>
+            <input type="number" class="space form-control" step="0.01" name="exang" placeholder="Enter Exang" required /><br>
+
+            <label class="white" for="oldpeak">ST Depression (oldpeak)</label>
+            <input type="number" class="space form-control" step="0.01" name="oldpeak" placeholder="Enter Oldpeak" required /><br>
+
+            <label class="white" for="slope">Slope of Peak Exercise ST Segment</label>
+            <input type="number" class="space form-control" step="0.01" name="slope" placeholder="Enter Slope" required /><br>
+
+            <label class="white" for="ca">Number of Major Vessels (ca)</label>
+            <input type="number" class="space form-control" step="0.01" name="ca" placeholder="Enter Number of Major Vessels" required /><br>
+
+            <label class="white" for="thal">Thalassemia</label>
+            <input type="number" class="space form-control" step="0.01" name="thal" placeholder="Enter Thalassemia Type" required /><br>
+          </div>
+        </div>
+
+        <div class="text-center" style="padding:2% 0">
+          <button type="submit" class="btn btn-success btn-lg">Predict</button>
+        </div>
+      </form>
+
+      <br><br>
+      
+     
+    </div>
+  </body>
+</html>
+

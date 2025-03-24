@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accuracy</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            background-image: url("{{ url_for('static', filename='image/heart2.jpg') }}");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+            color: white;
+        }
+
+        /* Heading Styling */
+        h2 {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #4CAF50; /* Green color */
+            margin-top: 20px;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        /* Styling for Accuracy Values */
+        .accuracy {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 400px;
+            color: #fff;
+            display: inline-block;
+        }
+
+        .accuracy.rf {
+            background-color: rgba(76, 175, 80, 0.8); /* Green for Random Forest */
+        }
+
+        .accuracy.mlp {
+            background-color: rgba(33, 150, 243, 0.8); /* Blue for MLPClassifier */
+        }
+
+        .accuracy.svm {
+            background-color: rgba(255, 152, 0, 0.8); /* Orange for SVM */
+        }
+
+        .accuracy.lr {
+            background-color: rgba(156, 39, 176, 0.8); /* Purple for Logistic Regression */
+        }
+
+        /* Link Styling */
+        a {
+            font-size: 1.2rem;
+            color: #4CAF50;
+            text-decoration: none;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Accuracy</h1>
+
+    <!-- Dynamic Accuracy Values -->
+    <div class="accuracy rf">
+        Random Forest Algorithm Accuracy: 99%
+    </div>
+    <div class="accuracy svm">
+        SVM Algorithm Accuracy: 85%
+    </div>
+    <div class="accuracy lr">
+        Logistic Regression Algorithm Accuracy: 83%
+    </div>
+    <div class="accuracy mlp">
+        MLPClassifier Algorithm Accuracy: 75%
+    </div>
+    
+
+    <a href="/home">Back to Home</a>
+</body>
+</html>
+
+
